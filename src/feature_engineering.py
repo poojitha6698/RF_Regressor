@@ -1,13 +1,10 @@
 from sklearn.preprocessing import StandardScaler
 
-
-def feature_engineering(df):
-
-    X = df.drop('price', axis=1)
-    y = df['price']
+def feature_engineering(X_train, X_test):
 
     scaler = StandardScaler()
 
-    X_scaled = scaler.fit_transform(X)
+    X_train_scaled = scaler.fit_transform(X_train)
+    X_test_scaled = scaler.transform(X_test)
 
-    return X_scaled, y, scaler
+    return X_train_scaled, X_test_scaled, scaler
